@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Portfolio Generator</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    /* Reset */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Roboto', sans-serif; background: #f9fafb; color: #333; line-height: 1.6; }
+    a { text-decoration: none; color: inherit; }
+
+    .container { max-width: 1000px; margin: 30px auto; padding: 20px; }
+    h1, h2 { text-align: center; margin-bottom: 20px; }
+    h1 { font-size: 2.5em; color: #007BFF; }
+    
+    /* Form Styles */
+    form { background: #fff; padding: 25px; border-radius: 12px; box-shadow: 0 8px 20px rgba(0,0,0,0.08); margin-bottom: 40px; }
+    form label { display: block; margin: 15px 0 5px; font-weight: 500; }
+    form input, form textarea { width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #ccc; font-size: 14px; transition: 0.3s; }
+    form input:focus, form textarea:focus { border-color: #007BFF; box-shadow: 0 0 5px rgba(0,123,255,0.3); outline: none; }
+    form button { display: block; width: 100%; margin-top: 20px; padding: 12px; font-size: 16px; background: #007BFF; color: #fff; border: none; border-radius: 8px; cursor: pointer; transition: 0.3s; }
+    form button:hover { background: #0056b3; }
+
+    /* Portfolio Styles */
+    .portfolio { display: grid; grid-template-columns: 1fr; gap: 30px; }
+    @media(min-width: 768px) { .portfolio { grid-template-columns: 1fr 1fr; } }
+
+    .card { background: #fff; border-radius: 12px; padding: 25px; box-shadow: 0 8px 20px rgba(0,0,0,0.08); transition: transform 0.3s, box-shadow 0.3s; }
+    .card:hover { transform: translateY(-5px); box-shadow: 0 12px 30px rgba(0,0,0,0.12); }
+
+    .card img { width: 100%; border-radius: 10px; margin-bottom: 15px; display: none; }
+
+    .card h2 { font-size: 1.5em; color: #007BFF; margin-bottom: 10px; }
+    .card p { margin-bottom: 10px; color: #555; }
+    .badges { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 10px; }
+    .badge { background: #e7f0ff; color: #007BFF; padding: 5px 10px; border-radius: 8px; font-size: 13px; }
+
+    /* Hero Section */
+    .hero { text-align: center; padding: 40px 20px; background: #007BFF; color: white; border-radius: 12px; margin-bottom: 30px; }
+    .hero h1 { color: white; font-size: 2.5em; margin-bottom: 10px; }
+    .hero p { font-size: 1.2em; max-width: 700px; margin: 0 auto; }
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Interactive Portfolio Generator</h1>
+    <form id="portfolioForm">
+      <label>Name:</label>
+      <input type="text" id="name" placeholder="Your Name" required>
+
+      <label>Bio:</label>
+      <textarea id="bio" rows="3" placeholder="Write a short bio" required></textarea>
+
+      <label>Skills (comma separated):</label>
+      <input type="text" id="skills" placeholder="e.g., HTML, CSS, JavaScript" required>
+
+      <label>Projects (comma separated titles):</label>
+      <input type="text" id="projects" placeholder="e.g., Portfolio Website, Blog, Game" required>
+
+      <label>Project Images (comma separated URLs, optional, same order as projects):</label>
+      <input type="text" id="images" placeholder="e.g., https://link1.com,img2.png,..." >
+
+      <label>Project Descriptions (comma separated, same order as projects):</label>
+      <input type="text" id="descriptions" placeholder="Short descriptions for each project" >
+
+      <button type="submit">Generate Portfolio</button>
+    </form>
+
+    <div id="portfolioOutput"></div>
+  </div>
+
+  <script>
+    document.getElementById('portfolioForm').addEventListener('submit', function(e){
+      e.preventDefault();
+
+      // Get user inputs
+      const name = document.getElementById('name').value;
+      const bio = document.getElementById('bio').value;
+      const skills = document.getElementById('skills').value.split(',').map(s => s.trim());
+      const projects = document.getElementById('projects').value.split(',').map(p => p.trim());
+      const images = document.getElementById('images').value.split(',').map(i => i.trim());
+      const descriptions = document.getElementById('descriptions').value.split(',').map(d => d.trim());
+
+      // Hero Section
+      let html = `
+        <div class="hero">
+          <h1>${name}</h1>
+          <p>${bio}</p>
+        </div>
+        <h2 style="margin-bottom:15px;">Skills</h2>
+        <div class="badges" style="margin-bottom:30px;">
+          ${skills.map(skill => `<div class="badge">${skill}</div>`).join('')}
+        </div>
+        <h2 style="margin-bottom:15px;">Projects</h2>
+        <div class="portfolio">
+      `;
+
+      // Projects Cards
+      for(let i=0;i<projects.length;i++){
+        html += `
+          <div class="card">
+            ${images[i] ? `<img src="${images[i]}" alt="${projects[i]}">` : ''}
+            <h2>${projects[i]}</h2>
+            <p>${descriptions[i] ? descriptions[i] : ''}</p>
+            <div class="badges">
+              ${skills.map(skill => `<div class="badge">${skill}</div>`).join('')}
+            </div>
+          </div>
+        `;
+      }
+
+      html += `</div>`; // close portfolio
+
+      document.getElementById('portfolioOutput').innerHTML = html;
+
+      // Scroll to portfolio
+      document.getElementById('portfolioOutput').scrollIntoView({ behavior: 'smooth' });
+    });
+  </script>
+</body>
+</html>
