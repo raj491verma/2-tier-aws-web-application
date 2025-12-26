@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Raja Verma | AWS & DevOps Engineer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Segoe UI", Arial, sans-serif;
+        }
+
+        body {
+            background: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            background: #0a2540;
+            color: white;
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.6rem;
+        }
+
+        header p {
+            margin-top: 10px;
+            color: #cbd5e1;
+        }
+
+        nav {
+            background: white;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            padding: 15px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #0a2540;
+            font-weight: 600;
+        }
+
+        nav a:hover {
+            color: #2563eb;
+        }
+
+        .section {
+            padding: 60px 20px;
+            max-width: 900px;
+            margin: auto;
+        }
+
+        .section.light {
+            background: white;
+            border-radius: 8px;
+        }
+
+        .section h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #0a2540;
+        }
+
+        .skills {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 15px;
+        }
+
+        .skills li {
+            background: #e5efff;
+            padding: 12px;
+            border-radius: 6px;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        .card {
+            background: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-left: 4px solid #2563eb;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .card h3 {
+            color: #0a2540;
+            margin-bottom: 10px;
+        }
+
+        .contact-form {
+            max-width: 500px;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            padding: 12px;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            font-size: 1rem;
+        }
+
+        .contact-form button {
+            background: #2563eb;
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .contact-form button:hover {
+            background: #1e40af;
+        }
+
+        .email-note {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        footer {
+            background: #0a2540;
+            color: #cbd5e1;
+            text-align: center;
+            padding: 20px;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>Raja Verma</h1>
+    <p>AWS & DevOps Engineer | Networking | Systems | CCNA</p>
+</header>
+
+<nav>
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#experience">Experience</a>
+    <a href="#contact">Contact</a>
+</nav>
+
+<section id="about" class="section">
+    <h2>About Me</h2>
+    <p>
+        Software Engineer with expertise in Networking, Systems Administration,
+        Desktop Support, and cloud technologies. Currently working as an
+        AWS / DevOps Engineer focused on scalable, reliable infrastructure.
+    </p>
+</section>
+
+<section id="skills" class="section light">
+    <h2>Technical Skills</h2>
+    <ul class="skills">
+        <li>AWS (EC2, S3, IAM, VPC)</li>
+        <li>DevOps Fundamentals</li>
+        <li>Linux & Windows Systems</li>
+        <li>Networking (CCNA)</li>
+        <li>Docker & CI/CD Basics</li>
+        <li>Desktop & IT Support</li>
+    </ul>
+</section>
+
+<section id="experience" class="section">
+    <h2>Experience</h2>
+
+    <div class="card">
+        <h3>AWS / DevOps Engineer</h3>
+        <p>
+            Managed AWS infrastructure, automation, monitoring,
+            and system reliability improvements.
+        </p>
+    </div>
+
+    <div class="card">
+        <h3>Desktop Support Engineer</h3>
+        <p>
+            Provided technical support for systems, networks,
+            and end-users with minimal downtime.
+        </p>
+    </div>
+</section>
+
+<section id="contact" class="section light">
+    <h2>Contact Me</h2>
+
+    <p style="text-align:center; margin-bottom:20px;">
+        Have a question or want to work together?  
+        Send me a message below.
+    </p>
+
+    <form action="https://formspree.io/f/abcdwxyz" method="POST" class="contact-form">
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="email" name="email" placeholder="Your Email" required>
+        <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+        <button type="submit">Send Message</button>
+    </form>
+
+    <p class="email-note">
+        Or email directly: 
+        <a href="mailto:raj491verma@gmail.com">raj491verma@gmail.com</a>
+    </p>
+</section>
+
+<footer>
+    <p>© 2025 Raja Verma. All Rights Reserved.</p>
+</footer>
+
+</body>
+</html>
+
